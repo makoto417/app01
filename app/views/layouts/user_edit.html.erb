@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Oriapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+  <body>
+  <%= render "shared/header" %>
+  <div class="setting-wrap">
+    <div class="setting-wrap">
+      <div class="setting-sub c-box">
+        <div class="setting-sub-top">
+          <div class="setting-user-image">
+            <% if current_user.image.present? %>
+              <div class="setting-image"><%= image_tag current_user.image, class: "set-img img-back" %></div>
+            <% else %>
+              <div class="recommend-user-image"><%= image_tag "test.png", class: "set-img" %></div>
+            <% end %>
+          </div>
+          <p><%= current_user.nickname %></p>
+        </div>
+      </div>
+      <div class="setting-main">
+        <%= yield %>
+      </div>
+    </div>
+
+    <div class="show-right">
+      <div class="show-right-top">
+        <div class="recommend-title">おすすめユーザー</div>
+        <%= link_to users_path, class: "recommend-link" do %>
+          <span class="recommend-link-text">もっと見る</span>
+          <div>
+            <%= image_tag 'sharp_keyboard_arrow_right_black_18dp.png', :size => '23x23' %>
+          </div>
+        <% end %>
+      </div>
+      <ul class="recommend-user-wrap c-box">
+        
+          <% @similar_user_limit.each do |e| %>
+          <li class="recommend-user-item">
+            <div class="recommend-user-left">
+              <% if e.image.present? %>
+                <div class="recommend-user-image"><%= image_tag e.image, class: "recommend-img img-back" %></div>
+              <% else %>
+                <div class="recommend-user-image"><%= image_tag "test.png", class: "recommend-img" %></div>
+              <% end %>
+            </div>
+            <div class="recommend-user-right">
+              <%= link_to e.nickname, user_path(e.id) %>
+              <p><%= e.profile %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  </body>
+</html>

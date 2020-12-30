@@ -32,7 +32,11 @@
           </div>
           <div class="profile-content">
             <label class="profile-label">自己紹介文:<br></label>
-            <p class="profile-text"><%= safe_join(@user.profile.split("\n"),tag(:br)) %></p>
+            <% if @user.profile.present? %>
+              <p class="profile-text"><%= safe_join(@user.profile.split("\n"),tag(:br)) %></p>
+            <% else %>
+              <p class="profile-text"><%= link_to '自己紹介文を書く', profile_users_path(@user) %></p>
+            <% end %>
           </div>
         </div>
       </div><hr>
