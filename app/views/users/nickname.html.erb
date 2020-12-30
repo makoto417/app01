@@ -1,0 +1,29 @@
+<div class="setting-main-top c-box">
+  <p>ユーザー名変更</p>
+  <%= form_with model: @user, url: user_registration_path, html: { method: :put }, local: true do |f| %>
+    <div class="field">
+      <div>
+        <label class="form-text">ニックネーム</label>
+      </div>
+      <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"15文字以内", maxlength:"40", autofocus: true %>
+    </div>
+    <div class="btn update-btn actions">
+      <%= f.submit "変更する", class:"update-in-btn" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="setting-main-bottom c-box">
+  <%= link_to user_path(@user.id), class: "return-link" do %>
+    <div>
+      <%= image_tag 'baseline_keyboard_arrow_left_black_18dp.png', :size => '23x23' %>
+    </div>
+    <span class="recommend-link-text">プロフィールに戻る</span>
+  <% end %>
+  <%= link_to setting_users_path, class: "return-link" do %>
+    <div>
+      <%= image_tag 'baseline_keyboard_arrow_left_black_18dp.png', :size => '23x23' %>
+    </div>
+    <span class="recommend-link-text">設定一覧に戻る</span>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<div class='second-header'>
+  <% @consoles.each do |console| %>
+    <ul class="console-wrapper">
+      <li class='console-name'><%= link_to console.name, "#" %></li>
+    </ul>
+  <% end %>
+</div>

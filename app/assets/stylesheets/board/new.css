@@ -1,0 +1,24 @@
+.board-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.board-new-contents {
+  width: 60%;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.title {
+  margin-top: 10px;
+  font-size: 20px;
+  border-bottom: 2px solid black;
+}
+
+.board-text {
+  width: 90%;
+  height: 100px;
+  resize: none;
+}

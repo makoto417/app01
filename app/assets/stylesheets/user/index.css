@@ -1,0 +1,47 @@
+.recommend-index {
+  width: 100%;
+  margin: 20px 10px;
+}
+
+.index-bottom {
+  display: flex;
+  width: 100%;
+}
+
+.form-setting {
+  display: block;
+}
+
+.panel {
+  width: 250px;
+  margin: 5px 15px 0 0;
+  height: 100%;
+}
+
+.user-show {
+  width: 600px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.recommend-index span {
+  margin: 5px;
+}
+
+.pagination>li>a {
+  border: none; 
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+

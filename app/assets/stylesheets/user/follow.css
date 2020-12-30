@@ -1,0 +1,24 @@
+.following-btn {
+  background-color: white;
+  border: 1px solid #a4d2f7;
+  border-radius: 3px;
+  color: #a4d2f7;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 3px;
+}
+
+.following-btn:hover {
+  background-color: #a4d2f7;
+  color: white;
+}
+
+.followed-btn {
+  background-color: #a4d2f7;
+  border: 1px solid #a4d2f7;
+  border-radius: 3px;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 3px;
+}

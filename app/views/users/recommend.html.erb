@@ -1,0 +1,28 @@
+<div class="recommend-index">
+  <div class="page-link">
+    <p><%= link_to "トップページに戻る", root_path, class:"edit-link" %></p>
+    <% if user_signed_in? %>
+      <p><%= link_to "ユーザー一覧へ", users_path,class:"edit-link" %></p>
+      <p><%= link_to "マイページへ", user_path(current_user.id),class:"edit-link" %></p>
+    <% end %>
+  </div>
+  <div class="user-show">
+    <div class="show-right-top">
+      <div class="recommend-title">おすすめユーザー一覧</div>
+    </div>
+    <ul class="recommend-user-wrap c-box">
+      <% @similar_users.each do |e| %>
+        <li class="recommend-user-item">
+          <div class="recommend-user-left">
+            <div class="recommend-user-image">image</div>
+          </div>
+          <div class="recommend-user-right">
+            <%= link_to e.nickname, user_path(e.id) %>
+            <p><%= e.profile %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <span><%= paginate @similar_users %></span>
+  </div>
+</div>

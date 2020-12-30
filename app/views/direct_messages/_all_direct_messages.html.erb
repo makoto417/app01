@@ -1,0 +1,25 @@
+<% if @direct_messages.present? %>
+  <% @direct_messages.each do |m| %>
+    <% if current_user.id == m.user.id %>
+      <div class="chat-box-right" id="message-<%= m.id %>">
+        <div class="chat-hukidashi-right">
+          <% if user_signed_in? && m.user_id == current_user.id %>
+            <%= form_with(model: @direct_message, url: direct_message_path(m.id), class: "delete-wrap", remote: true, method: :delete) do |f| %>
+              <%= f.hidden_field :room_id, value: @room.id %>
+              <%= f.submit "削除", class: "del-btn" %>
+            <% end %>
+          <% end %>
+          <p><%= m.created_at.strftime("%H:%M")%></p>
+          <strong class="message-area right-message"><%= safe_join(m.message.split("\n"),tag(:br)) %></strong>
+        </div>
+      </div>
+    <% else %>
+      <div class="chat-box-left" id="message-<%= m.id %>">
+        <div class="chat-hukidashi-left">
+          <strong class="message-area"><%= m.message %></strong> <br>
+          <p><%= m.created_at.strftime("%H:%M")%></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

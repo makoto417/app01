@@ -1,0 +1,16 @@
+.index-board-item {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.index-title {
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+}
+
+.index-board-title {
+  padding: 5px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

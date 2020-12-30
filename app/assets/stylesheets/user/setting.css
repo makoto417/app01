@@ -1,0 +1,41 @@
+
+.setting-main {
+  margin: 20px 5px 5px 5px;
+  width: 400px;
+}
+
+.setting-main p {
+  background-color: black;
+  color: white;
+  padding: 8px;
+}
+
+
+.setting-items li {
+  font-size: 13px;
+  border-bottom: 1px solid lightgray;
+
+}
+
+.setting-items li a {
+  display: block;
+  padding: 8px;
+  width: 100%;
+  height: 100%;
+  color: blue;
+  font-weight: bold;
+}
+
+.setting-items li a:hover {
+  color: red;
+}
+
+.setting-main-bottom {
+  margin-top: 10px;
+}
+
+.setting-main-bottom a {
+  padding: 5px;
+  font-size: 12px;
+  line-height: 20px;
+}

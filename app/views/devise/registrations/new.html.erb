@@ -1,0 +1,64 @@
+<div class='registration-main'>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "registration-second" }) do |f| %>
+    <p class='signup'>新規登録</p>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <div>
+        <label class="form-text">ニックネーム</label>
+      </div>
+      <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"15文字以内", maxlength:"40", autofocus: true %>
+    </div>
+
+    <div class="field">
+      <div>
+        <label class="form-text">メールアドレス</label>
+      </div>
+      <%= f.email_field :email, class:"input-default", id:"email", placeholder:"あなたのメールアドレス" %>
+    </div>
+
+    <div class="field">
+      <div>
+        <label class="form-text">パスワード</label>
+      </div>
+      <%= f.password_field :password, class:"input-default", id:"password", placeholder:"パスワード６文字以上" %>
+    </div>
+
+    <div class="field">
+      <div>
+        <label class="form-text" >パスワード確認</label>
+      </div>
+      <%= f.password_field :password_confirmation, class:"input-default", autocomplete: "new-password", placeholder:"もう一度パスワードを入力" %>
+    </div>
+
+    <div class="field">
+      <label class="form-text"><p>持っている機器（任意）</p></label><br>
+      <div class='checkboxes checkbox-top'>
+        <%= f.collection_check_boxes(:console_ids, Console.all, :id, :name) do |b| %>
+          <label class='checkbox-console'><%= b.label {b.check_box + b.text} %></label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="form-text">好きなジャンル（任意）</label>
+      <div class='checkboxes checkbox-middle'>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+          <label class='checkbox-category'><%= b.label {b.check_box + b.text} %></label><br>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div>
+        <label class="form-text">profile（任意）</label>
+      </div>
+      <%= f.text_area :profile, class:"input-custom", placeholder: "自己紹介文" %>
+    </div>
+
+    <div class="btn register-btn">
+      <%= f.submit "新規登録", class:"register-in-btn" %>
+    </div>
+  <% end %>
+</div>
+

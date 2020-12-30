@@ -1,0 +1,70 @@
+.room-wrap {
+  background-color: #f2f2f2;
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 45px);
+}
+
+.room-left {
+  background-color: white;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,.12), 0 1px 2px 0 rgba(0,0,0,.24);
+  width: 200px;
+  min-width: 200px;
+}
+
+.room-herder-left {
+  background-color: slategrey;
+  width: 100%;
+  height: 50px;
+  padding: 15px 10px;
+  border-bottom: 1px solid gray;
+  box-shadow: 0 5px 5px 0px rgba(0,0,0,.12);
+}
+
+.room-herder-left a {
+  color: white;
+  font-size: 17px;
+  text-align: center;
+  line-height: 20px;
+}
+
+.room-herder-left a:hover {
+  color: blue;
+}
+
+.room-main-left {
+  margin: 10px;
+  height: calc(100% - 60px);
+  overflow-y: scroll;
+}
+
+.edit-link  {
+  font-size: 12px;
+}
+
+.room-main-left ul {
+  margin-top: 10px;
+}
+
+.room-main-left ul li {
+  margin-top: 3px;
+}
+
+.room-main-left ul li a {
+  padding: 3px 0;
+  font-size: 15px;
+}
+
+.room-right {
+  width: calc(100% - 200px);
+  min-width: 500px;
+}
+
+.chat-wrap {
+  height: 100%;
+}
+
+.chat-all {
+  height: calc(100% - 60px);
+  overflow-y: scroll;
+}

@@ -1,0 +1,40 @@
+<div class="setting-main-top c-box">
+  <p>ゲーム設定</p>
+  <%= form_with model: @user, url: user_registration_path, html: { method: :put }, local: true do |f| %>
+    <div class="field">
+      <label class="form-text">持っている機器</label>
+      <div class='checkboxes checkbox-top'>
+        <%= f.collection_check_boxes(:console_ids, Console.all, :id, :name) do |b| %>
+          <label class='checkbox-console'><%= b.label {b.check_box + b.text} %></label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="form-text">好きなジャンル</label>
+      <div class='checkboxes checkbox-middle'>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+          <label class='checkbox-category'><%= b.label {b.check_box + b.text} %></label><br>
+        <% end %>
+      </div>
+    </div>
+    <div class="btn update-btn actions">
+      <%= f.submit "変更する", class:"update-in-btn" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="setting-main-bottom c-box">
+  <%= link_to user_path(@user.id), class: "return-link" do %>
+    <div>
+      <%= image_tag 'baseline_keyboard_arrow_left_black_18dp.png', :size => '23x23' %>
+    </div>
+    <span class="recommend-link-text">プロフィールに戻る</span>
+  <% end %>
+  <%= link_to setting_users_path, class: "return-link" do %>
+    <div>
+      <%= image_tag 'baseline_keyboard_arrow_left_black_18dp.png', :size => '23x23' %>
+    </div>
+    <span class="recommend-link-text">設定一覧に戻る</span>
+  <% end %>
+</div>

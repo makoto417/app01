@@ -1,0 +1,5 @@
+<%= form_with model: @direct_message, id: "form-message", class: "form-message form-group" do |f| %>
+  <%= f.text_area :message, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field form-control" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "投稿", class: 'btn btn-primary form-submit', id: 'submit-message'%>
+<% end %>

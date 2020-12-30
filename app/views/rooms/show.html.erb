@@ -1,0 +1,31 @@
+<div class="room-wrap">
+  <div class="room-left">
+    <div class="room-herder-left">
+      <% @entries.each do |e| %>
+        <%= link_to e.user.nickname, user_path(e.user.id) %>
+      <% end %>
+    </div>
+    <div class="room-main-left">
+      <%= link_to "マイページに戻る", user_path(current_user.id),class:"edit-link" %>
+      <ul>
+        <% @anotherEntries.each do |u| %>
+          <li><%= link_to u.user.nickname, room_path(u.room.id) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="room-right">
+    <div class="chat-wrap">
+      <div class="chat-all">
+        <%= render 'direct_messages/all_direct_messages' %>
+      </div>
+      <div class="chat-form">
+        <%= render 'direct_messages/form_direct_message' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

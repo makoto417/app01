@@ -1,0 +1,17 @@
+<div class="follow">
+  <%= link_to followed_user_path(@user.id) do %>
+    <ul>
+      <li>フォロー</li>
+      <li><%= @user.followed.count %>人</li>
+    </ul>
+  <% end %>
+</div>
+<hr>
+<div class="follower">
+  <%= link_to followers_user_path(@user.id) do %>
+    <ul>
+      <li>フォロワー</li>
+      <li><%= @user.followers.count %>人</li>
+    </ul>
+  <% end %>
+</div>

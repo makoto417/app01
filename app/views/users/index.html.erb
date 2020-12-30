@@ -1,0 +1,58 @@
+<div class="recommend-index">
+  <div class="index-top">
+    <p><%= link_to "トップページに戻る", root_path, class:"edit-link" %></p>
+    <% if user_signed_in? %>
+      <p><%= link_to "おすすめユーザー一覧へ", recommend_user_path(current_user.id),class:"edit-link" %></p>
+      <p><%= link_to "マイページへ", user_path(current_user.id),class:"edit-link" %></p>
+    <% end %>
+  </div>
+  <div class="index-bottom">
+    <div class="panel panel-default">
+      <%= render "form_search" %>
+    </div>
+    <div class="user-show">
+      <ul class="users-wrap c-box">
+        <% if params[:q].present? %>
+          <div class="index-title">検索結果</div>
+          <% if @results.empty? %>
+            <p class="index-board-title">該当のユーザーが存在しません。</p>
+          <% end %>
+          <% @results.each do |e| %>
+            <li class="recommend-user-item">
+              <div class="recommend-user-left">
+                <% if e.image.present? %>
+                <div class="recommend-user-image"><%= image_tag e.image, class: "recommend-img img-back" %></div>
+                <% else %>
+                  <div class="recommend-user-image"><%= image_tag "test.png", class: "recommend-img" %></div>
+                <% end %>
+              </div>
+              <div class="recommend-user-right">
+                <%= link_to e.nickname, user_path(e.id) %>
+                <p><%= e.profile %></p>
+              </div>
+            </li>
+          <% end %>
+          <span><%= paginate @results %></span>
+        <% else %>
+          <div class="index-title">ユーザー一覧</div>
+          <% @users.each do |e| %>
+            <li class="recommend-user-item">
+              <div class="recommend-user-left">
+                <% if e.image.present? %>
+                <div class="recommend-user-image"><%= image_tag e.image, class: "recommend-img img-back" %></div>
+                <% else %>
+                  <div class="recommend-user-image"><%= image_tag "test.png", class: "recommend-img" %></div>
+                <% end %>
+                </div>
+              <div class="recommend-user-right">
+                <%= link_to e.nickname, user_path(e.id) %>
+                <p><%= e.profile %></p>
+              </div>
+            </li>
+          <% end %>
+          <span><%= paginate @users %></span>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="setting-main-top c-box">
+  <p>プロフィール画像変更</p>
+  <%= form_with model: @user, url: user_registration_path, html: { method: :put }, local: true do |f| %>
+    <div class="field">
+      <%= f.label :image %>
+      <%= f.file_field :imaga %>
+    </div>
+    <div class="btn update-btn actions">
+      <%= f.submit "変更する", class:"update-in-btn" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="setting-main-bottom c-box">
+  <%= link_to user_path(@user.id), class: "return-link" do %>
+    <div>
+      <%= image_tag 'baseline_keyboard_arrow_left_black_18dp.png', :size => '23x23' %>
+    </div>
+    <span class="recommend-link-text">プロフィールに戻る</span>
+  <% end %>
+  <%= link_to setting_users_path, class: "return-link" do %>
+    <div>
+      <%= image_tag 'baseline_keyboard_arrow_left_black_18dp.png', :size => '23x23' %>
+    </div>
+    <span class="recommend-link-text">設定一覧に戻る</span>
+  <% end %>
+</div>

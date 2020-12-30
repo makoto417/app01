@@ -1,0 +1,13 @@
+.follow-show {
+  display: flex;
+  font-size: 12px;
+  padding: 0 15px;
+}
+
+.follow {
+  text-align: center;
+}
+
+.follower {
+  text-align: center;
+}

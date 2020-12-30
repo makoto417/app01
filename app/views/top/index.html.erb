@@ -1,0 +1,48 @@
+<div class="top-wrapper">
+  <div class="top-left">
+    <div class="top-right">
+      <div class="rank-title">人気カテゴリー</div>
+      <ul class="rank-wrap c-box">
+        <% @category_ranks.each.with_index(1) do |e, i| %>
+          <%= link_to "#" do %>
+            <li class="rank-item">
+              <div class="rank-tag-num"><%= "#{i}: " %></div> 
+              <div class="rank-name"><%= e.name %></div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="top-center">
+    <div class="top-board">
+      <div class="all-thread c-box">
+        <p class="top-board-title">新着掲示板一覧</p>
+        
+      </div>
+
+    </div>
+
+    <div class="top-post">
+      <div class="all-post c-box">
+        <p class="top-board-title">メンバー募集</p>
+        
+    </div>
+  </div>
+
+  <div class="top-right">
+    <% if user_signed_in? %>
+      <div class="show-right">
+        <div class="show-right-top">
+          <div class="recommend-title">おすすめユーザー</div>
+          
+        </div>
+        <ul class="recommend-user-wrap c-box">
+          
+          
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

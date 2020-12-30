@@ -1,0 +1,122 @@
+.top-wrapper {
+  display: flex;
+  margin-top: 10px;
+}
+
+.top-left {
+  width: 250px;
+  height: 100vh;
+  margin: 20px 5px;
+}
+
+.rank-title {
+  padding: 5px;
+}
+
+.rank-item {
+  display: flex;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  padding: 5px;
+}
+
+.top-center {
+  width: 500px;
+}
+
+.top-board {
+  margin: 30px auto;
+  padding: 20px 20px;
+}
+
+.top-board-title {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.all-thread {
+  height: auto;
+  padding: 5px 30px;
+  min-width: 300px;
+}
+
+.top-thread-list li a {
+  width: 100%;
+  min-height: 50px;
+  display: block;
+  box-sizing: border-box;
+  padding: 4px 10px 0px;
+  cursor: pointer;
+  color: black;
+  background-image: image-url('sharp_keyboard_arrow_right_black_18dp.png');
+  background-size: 25px;
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 255, 255, 0.05);
+  margin: 5px 0!important;
+  line-height: normal!important;
+  border: 1px solid rgb(200, 200, 225);
+  border-radius: 5px;
+}
+
+.top-thread-list li a:hover {
+  background-color: rgba(0, 100, 150, 0.2);
+}
+
+.thread-title {
+  padding-right: 25px;
+  padding-bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.material-icons.thread-image {
+  font-size: 35px;
+}
+
+.top-post {
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+.all-post {
+  padding: 5px 15px;
+}
+
+.top-post-list {
+  background-color: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgb(200, 200, 225);
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.top-post-over {
+  display: flex;
+  align-items: center;
+}
+
+.top-post-over a {
+  color: black;
+  font-weight: bold;
+}
+
+.top-right {
+  width: 250px;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(255, 0, 0);
+}
+
+.c-box {
+  background-color: white;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,.12), 0 1px 2px 0 rgba(0,0,0,.24);
+  border-radius: 3px;
+}

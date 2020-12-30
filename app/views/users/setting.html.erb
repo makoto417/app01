@@ -1,0 +1,20 @@
+<div class="setting-main-top c-box">
+  <p>プロフィール変更</p>
+  <ul class="setting-items">
+    <li><%= link_to "ユーザー名変更", "/users/nickname" %></li>
+    <li><%= link_to "プロフィール画像", "/users/profileimage" %></li>
+    <li><%= link_to "自己紹介文変更", "/users/profile" %></li>
+    <li><%= link_to "ゲームプロフィール変更", "/users/gameprofile" %></li>
+    <li><%= link_to "メールアドレス変更", "/users/email" %></li>
+    <li><%= link_to "パスワード変更", "/users/password/edit" %></li>
+  </ul>
+</div>
+
+<div class="setting-main-bottom c-box">
+  <%= link_to user_path(current_user.id), class: "return-link" do %>
+    <div>
+      <%= image_tag 'baseline_keyboard_arrow_left_black_18dp.png', :size => '23x23' %>
+    </div>
+    <span class="recommend-link-text">プロフィールに戻る</span>
+  <% end %>
+</div>

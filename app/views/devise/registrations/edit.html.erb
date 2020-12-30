@@ -1,0 +1,61 @@
+<div class='registration-main'>
+  <%= form_with model: @user, url: user_registration_path, html: { method: :put }, class: 'registration-second', local: true do |f| %>
+    <p class='signup'>ユーザー情報編集</p>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <div>
+        <label class="form-text">ニックネーム</label>
+      </div>
+      <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"15文字以内", maxlength:"15", autofocus: true %>
+    </div>
+
+    <div class="field">
+      <div>
+        <label class="form-text">メールアドレス</label>
+      </div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <label class="form-text"><p>持っている機器</p></label>
+      <div class='checkboxes checkbox-top'>
+        <%= f.collection_check_boxes(:console_ids, Console.all, :id, :name) do |b| %>
+          <label class='checkbox-console'><%= b.label {b.check_box + b.text} %></label>
+        <% end %>
+      </div>
+    </div>
+
+      <div class="field">
+        <label class="form-text">好きなジャンル</label>
+        <div class='checkboxes checkbox-middle'>
+          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+            <label class='checkbox-category'><%= b.label {b.check_box + b.text} %></label><br>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="field">
+        <div>
+          <label class="form-text">profile</label>
+        </div>
+        <%= f.text_area :profile, class:"input-custom", placeholder: "自己紹介文" %>
+      </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="register-btn actions">
+      <%= f.submit "Update", class:"register-in-btn" %>
+    </div>
+  <% end %>
+</div>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>
+
+

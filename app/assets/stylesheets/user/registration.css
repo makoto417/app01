@@ -1,0 +1,100 @@
+.registration-main {
+  width: 100vw;
+  min-width: 100vw;
+  height: 100%;
+  background-color: #f2f2f2;
+  padding: 10px 0 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.registration-second {
+  width: 60%;
+  background-color: white;
+  border: 2px solid grey;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.signup {
+  background-color: #202020;
+  color: white;
+  padding: 5px 0 5px 5px;
+
+}
+
+.field {
+  margin: 10px 10px;
+}
+
+.form-text {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.input-default {
+  width: 100%;
+  margin-top: 5px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+}
+
+.input-custom {
+  width: 100%;
+  margin-top: 5px;
+  height: 100px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+}
+
+.checkboxes {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px 3px;
+}
+
+.checkbox-top {
+  float: left;
+}
+
+.checkbox-top label {
+  margin-left: 5px;
+  display: block;
+  float: left;
+  width: 80px;
+}
+
+.checkbox-category {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 10px;
+  width: auto;
+}
+
+.register-btn {
+  margin: 0 auto 10px;
+}
+
+.register-in-btn {
+  padding: 0 100px;
+  background: #0073a8;
+  color: #fff;
+  line-height: 48px;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  opacity: 0.7;
+}

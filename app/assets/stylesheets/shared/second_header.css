@@ -1,0 +1,26 @@
+.second-header {
+  background-color: rgb(80, 50, 30);
+  height: 60px;
+  border-top: 2px solid #ea5549;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 5px -3px rgba(0, 0, 0, 0.5);
+}
+
+.console-wrapper {
+  height: 100%;
+}
+
+.console-name a{
+  color: #ffffff;
+  font-size: 18px;
+  padding: 0 20px;
+  display: block;
+  padding: 15px;
+}
+
+.console-name a:hover {
+  background-color: rgba(255, 72, 72, 0.5);
+  color: white;
+}

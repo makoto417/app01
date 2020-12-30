@@ -1,0 +1,125 @@
+<div class="show-wrap">
+  <div class="show-left">
+    <div class="show-left-top c-box">
+      <div class="profile-wrap">
+        <div class="profile-left">
+          <% if @user.image.present? %>
+            <div class="image-circle"><%= image_tag @user.image, class: "profile-img img-back" %></div>
+          <% else %>
+            <div class="image-circle"><%= image_tag "test.png", class: "profile-img" %></div>
+          <% end %>
+          <div class="follow-show" id="js-follow-show">
+            <%= render "follow_count" %>
+          </div>
+        </div>
+        <div class="profile-right">
+          <ul class="profile-top">
+            <li class="profile-name"><%= @user.nickname %></li>
+            <% if user_signed_in? %>
+              <% if current_user.id == @user.id %>
+                <li class="profile-setting"><%= link_to '設定', setting_users_path %></li>
+              <% else %>
+                <%= render "follow_form" %>
+              <% end %>
+            <% end %>
+          </ul>
+          <hr>
+          <div class="profile-category">
+            <label class="profile-label">使用機器:</label>
+            <p><%= @consoles.map(&:name).join ', ' %></p>
+            <label class="profile-label">好きなジャンル:</label>
+            <p><%= @categories.map(&:name).join ', ' %></p>
+          </div>
+          <div class="profile-content">
+            <label class="profile-label">自己紹介文:<br></label>
+            <p class="profile-text"><%= safe_join(@user.profile.split("\n"),tag(:br)) %></p>
+          </div>
+        </div>
+      </div><hr>
+
+      <div class="following-users">
+        <div class="show-right-top">
+          <div class="recommend-title">フォローしている人</div>
+          <%= link_to followed_user_path(@user.id), class: "recommend-link" do %>
+            <span class="recommend-link-text">もっと見る</span>
+            <div>
+              <%= image_tag 'sharp_keyboard_arrow_right_black_18dp.png', :size => '23x23' %>
+            </div>
+          <% end %>
+        </div>
+        <div class="following-wrap">
+          <% if @user.followed.present? %>
+            <% @follow_limit.each do |e| %>
+              <%= link_to user_path(e.id) do %>
+                  <div class="following-user-item">
+                    <% if e.image.present? %>
+                      <div class="following-image"><%= image_tag e.image, class: "following-img img-back" %></div>
+                    <% else %>
+                      <div class="following-image"><%= image_tag "test.png", class: "following-img" %></div>
+                    <% end %>
+                    <p><%= e.nickname %></p>
+                  </div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p class="no-following">まだフォローしている人はいません。</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-bottom">
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <div class="show-bottom-left show-bottom-items c-box">
+          <p>DM</p>
+          <ul>
+            <% @anotherEntries.each do |e| %>
+              <li>
+                <%= link_to room_path(e.room.id) do %>
+                  <%= e.user.nickname %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% else %>
+        <div class="show-bottom-left show-bottom-items c-box">
+          <%= render "contact" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="show-right">
+      <div class="show-right-top">
+        <div class="recommend-title">おすすめユーザー</div>
+        <%= link_to recommend_user_path(@user.id), class: "recommend-link" do %>
+          <span class="recommend-link-text">もっと見る</span>
+          <div>
+            <%= image_tag 'sharp_keyboard_arrow_right_black_18dp.png', :size => '23x23' %>
+          </div>
+        <% end %>
+      </div>
+      <ul class="recommend-user-wrap c-box">
+        <% @similar_user_limit.each do |e| %>
+          <li class="recommend-user-item">
+            <div class="recommend-user-left">
+              <% if e.image.present? %>
+                <div class="recommend-user-image"><%= image_tag e.image, class: "recommend-img img-back" %></div>
+              <% else %>
+                <div class="recommend-user-image"><%= image_tag "test.png", class: "recommend-img" %></div>
+              <% end %>
+            </div>
+            <div class="recommend-user-right">
+              <%= link_to e.nickname, user_path(e.id) %>
+              <p><%= e.profile %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+</div>

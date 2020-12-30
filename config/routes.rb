@@ -1,0 +1,22 @@
+Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/show'
+  root 'top#index'
+  devise_for :users
+  resources :users, only: [:index, :show] do
+    collection do
+      get :setting
+      get :nickname
+      get :profileimage
+      get :profile
+      get :gameprofile
+      get :email
+    end
+    member do
+      get :followed, :followers, :recommend
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
+  resources :rooms, only: [:index, :create, :show]
+  resources :direct_messages, only: [:create, :destroy]
+end

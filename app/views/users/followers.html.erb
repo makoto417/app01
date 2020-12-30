@@ -1,0 +1,31 @@
+<div class="recommend-index">
+  <div class="room-main-left">
+    <p><%= link_to "トップページに戻る", root_path, class:"edit-link" %></p>
+    <% if user_signed_in? %>
+      <p><%= link_to "マイページに戻る", user_path(current_user.id),class:"edit-link" %></p>
+    <% end %>
+  </div>
+  <div class="user-show">
+    <div class="show-right-top">
+      <div class="recommend-title">フォロー一覧</div>
+    </div>
+    <ul class="recommend-user-wrap c-box">
+      <% @users.each do |e| %>
+        <li class="recommend-user-item">
+          <div class="recommend-user-left">
+            <% if e.image.present? %>
+              <div class="recommend-user-image"><%= image_tag e.image, class: "recommend-img img-back" %></div>
+            <% else %>
+              <div class="recommend-user-image"><%= image_tag "test.png", class: "recommend-img" %></div>
+            <% end %>
+          </div>
+          <div class="recommend-user-right">
+            <%= link_to e.nickname, user_path(e.id) %>
+            <p><%= e.profile %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <span><%= paginate @users %></span>
+  </div>
+</div>

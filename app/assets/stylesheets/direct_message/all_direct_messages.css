@@ -1,0 +1,56 @@
+.chat-box-right {
+  text-align: right;
+}
+
+.message-area {
+  padding: 6px;
+  background-color: rgb(176, 236, 161);
+  box-shadow: 0 0 2px 0 rgba(0,0,0,.12), 0 1px 2px 0 rgba(0,0,0,.24);
+  border-radius: 10px;
+}
+
+.chat-hukidashi-right {
+  display: flex;
+  margin: 5px 10px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.chat-hukidashi-right p {
+  color: #3f3f3f;
+  font-size: 10px;
+  margin-right: 10px;
+}
+
+.right-message {
+  text-align: left;
+}
+
+.del-btn {
+  background-color: none;
+  border-style: none;
+  color: blue;
+  font-size: 10px;
+}
+
+.del-btn:hover {
+  color: orange;
+}
+
+
+.chat-hukidashi-left {
+  display: flex;
+  margin: 5px 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.chat-hukidashi-left p {
+  color: #3f3f3f;
+  font-size: 10px;
+  margin-left: 10px;
+}
+
+.chat-box-left {
+  text-align: left;
+}
