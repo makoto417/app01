@@ -1,0 +1,73 @@
+<%# <%= render "shared/second_header" %>
+
+<div class="board-main">
+  <div class="redirect-top">
+    <%= link_to 'トップページに戻る', root_path %>
+  </div>
+  <div class="board-show">
+    <div class="board-info">
+      <div class="thread-header">
+        <p class="board-title"><%= @board.title %></p>
+        <div class="edit-thread">
+          <% if user_signed_in? && current_user.id == @board.user_id %>
+            <ul>
+              <li><%= link_to '編集', edit_board_path(@board.id) %></li>
+              <li><%= link_to '削除', board_path(@board.id), method: :delete %></li>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+      <ul class="board-content">
+        <li class="board-create">作成者:<%= @board.user.nickname %></li>
+        <li class="board-create"><%= @board.created_at.strftime("%Y/%m/%d") %></li>
+      </ul>
+    </div>
+
+    <div class="comment-wrap">
+      <% if @board.comments.empty? %>
+        コメントはまだありません
+      <% else %>
+        <% @comments.each_with_index do |comment, index| %>
+          <div class="comment-show c-box">
+            <div class="comment-header">
+              <ul class="comment-header-left">
+                <li class="comment-left-content"><%= 1 + index %></li>
+                <li class="comment-left-content"><%= comment.user.nickname %></li>
+                <li class="comment-left"><%= time_ago_in_words(comment.created_at) + '前' %></li>
+              </ul>
+              <ul class="comment-header-right">
+                <li class="comment-right-content"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></li>
+                <li class="comment-right-content">
+                  <% if user_signed_in? && current_user.id == comment.user_id %></li>
+                    <%= link_to '削除', board_comment_path(@board, comment), method: :delete %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+            <div class="comment-content">
+              <p><%= safe_join(comment.content.split("\n"),tag(:br)) %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="input-comment">
+      <% if user_signed_in? %>
+        <%= form_with model: [@board, @comment], class: "form-comment", local: true do |f| %>
+          <label class="form-text">コメント:</label>
+          <div class="input-content ">
+            <%= f.text_area :content, class: "content-custom" %>
+          </div>
+          <div class="btn register-btn">
+            <%= f.submit '投稿する', class: "register-in-btn" %>
+          </div>
+        <% end %>
+      <% else %>
+        書き込むにはログインが必要です
+        <%= link_to 'ログイン', new_user_session_path %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

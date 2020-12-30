@@ -1,0 +1,53 @@
+
+<div class="recommend-index">
+  <div class="index-top">
+    <p><%= link_to "トップページに戻る", root_path, class:"edit-link" %></p>
+  </div>
+  <div class="index-bottom">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">検索</div>
+      </div>
+      <div class="panel-body">
+        <%= search_form_for @q do |f| %>
+          <div class="row">
+            <div class="form-group form-setting">
+              <%= f.label :titel_cont, "タイトル" %>
+              <%= f.text_field :title_cont, class: "form-control" %>
+            </div>
+          </div>
+          <%= f.submit '検索', class: "btn btn-primary" %>
+          <%= link_to 'クリア', url_for, class: "btn btn-default" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="user-show ">
+      <ul class="users-wrap c-box">
+        <% if params[:q].present? %>
+          <div class="index-title">検索結果</div>
+          <% if @results.empty? %>
+            <p class="index-board-title">該当の掲示板が存在しません。</p>
+          <% end %>
+          <% @results.each do |result| %>
+            <%= link_to board_path(result.id) do %>
+              <li class="index-board-item">
+                <p class="index-board-title"><%= result.title %></p>
+              </li>
+            <% end %>
+          <% end %>
+          <span><%= paginate @results %></span>
+        <% else %>
+          <div class="index-title">掲示板一覧</div>
+          <% @boards.each do |board| %>
+            <%= link_to board_path(board.id) do %>
+              <li class="index-board-item">
+                <p class="index-board-title"><%= board.title %></p>
+              </li>
+            <% end %>
+          <% end %>
+          <span><%= paginate @boards %></span>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

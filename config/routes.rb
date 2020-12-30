@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :rooms, only: [:index, :create, :show]
   resources :direct_messages, only: [:create, :destroy]
+  resources :boards do
+    resources :comments, only: [:create, :destroy] 
+  end
 end

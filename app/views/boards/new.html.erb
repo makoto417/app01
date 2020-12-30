@@ -1,0 +1,40 @@
+<div class="board-wrap">
+  <%= form_with model: @board, url: boards_path, class: 'board-new-contents', local: true do |f| %>
+  <h1 class="title">新規スレッド作成</h1>
+    <div class="field">
+      <label class="form-text">タイトル:</label>
+      <%= f.text_field :title, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <label class="form-text"><p>console（任意）</p></label><br>
+      <div class='checkboxes checkbox-top'>
+        <%= f.collection_check_boxes(:console_ids, Console.all, :id, :name) do |b| %>
+          <label class='checkbox-console'><%= b.label {b.check_box + b.text} %></label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="form-text"><br><p>category（任意）</p></label>
+      <div class='checkboxes checkbox-middle'>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+          <label class='checkbox-category'><%= b.label {b.check_box + b.text} %></label><br>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="form-text"><p>game（任意）</p></label>
+      <div >
+        <%= f.collection_select(:game_id, Game.all, :id, :name, :include_blank => "---") do |b| %>
+          <label><%= b.label {b.check_box + b.text} %></label><br>
+        <% end %>
+      </div>
+    </div>
+
+      <div class="btn register-btn">
+      <%= f.submit "作成", class: "register-in-btn" %>
+    </div>
+  <% end %>
+</div>
