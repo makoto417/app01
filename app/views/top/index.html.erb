@@ -41,7 +41,21 @@
     <div class="top-post">
       <div class="all-post c-box">
         <p class="top-board-title">メンバー募集</p>
-        
+        <div class="top-post-wrapper">
+          <% @posts.each do |post| %>
+            <div class="top-post-list">
+              <ul class="top-post-over">
+                <li class="top-post-name"><%= link_to post.user.nickname, user_path(post.user_id) %></li>
+                <li class="comment-left">・<%= time_ago_in_words(post.created_at) + '前' %></li>
+              </ul>
+              <ul class="top-post-bottom">
+                <li class="top-post-content"><%= safe_join(post.message.split("\n"),tag(:br)) %></li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <%= link_to '新規作成', new_post_path %>
     </div>
   </div>
 

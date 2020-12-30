@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_083951) do
+ActiveRecord::Schema.define(version: 2020_12_30_085236) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -108,6 +108,34 @@ ActiveRecord::Schema.define(version: 2020_12_30_083951) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "post_category_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_post_category_relations_on_category_id"
+    t.index ["post_id"], name: "index_post_category_relations_on_post_id"
+  end
+
+  create_table "post_console_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "post_id"
+    t.bigint "console_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["console_id"], name: "index_post_console_relations_on_console_id"
+    t.index ["post_id"], name: "index_post_console_relations_on_post_id"
+  end
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "message", null: false
+    t.bigint "user_id"
+    t.bigint "game_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_posts_on_game_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -169,6 +197,12 @@ ActiveRecord::Schema.define(version: 2020_12_30_083951) do
   add_foreign_key "direct_messages", "users"
   add_foreign_key "entries", "rooms"
   add_foreign_key "entries", "users"
+  add_foreign_key "post_category_relations", "categories"
+  add_foreign_key "post_category_relations", "posts"
+  add_foreign_key "post_console_relations", "consoles"
+  add_foreign_key "post_console_relations", "posts"
+  add_foreign_key "posts", "games"
+  add_foreign_key "posts", "users"
   add_foreign_key "user_category_relations", "categories"
   add_foreign_key "user_category_relations", "users"
   add_foreign_key "user_console_relations", "consoles"
