@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:setting, :nickname]
-  before_action :set_user, only: [:show, :recommend]
+  before_action :set_user, only: [:show, :recommend, :followed, :follower]
   before_action :set_current_user, only: [:setting, :nickname, :profile, :gameprofile, :profileimage, :email, :password]
   before_action :recommend_function, except: [:index, :followed, :follower]
   before_action :set_user_edit, only: [:nickname, :profile, :gameprofile, :profileimage, :email, :password]
