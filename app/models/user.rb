@@ -33,4 +33,10 @@ class User < ApplicationRecord
     relationship = followed_relationships.find_by(followed_id: other_user.id)
     relationship.destroy if relationship
   end
+
+  def self.guest
+    find_or_create_by!(nickname: 'ゲスト', email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end

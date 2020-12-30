@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   root 'top#index'
   devise_for :users, controllers: {
     registrations: "users/registrations",
+    passwords: 'users/passwords'
   }
-  post '/top/guest_sign_in', to: 'top#new_guest'
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
   resources :users, only: [:index, :show] do
     collection do
       get :setting
