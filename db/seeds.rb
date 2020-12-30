@@ -1,34 +1,3 @@
-# カテゴリーデータ
-Category.create(name: 'シューティングゲーム(STG)')
-Category.create(name: 'アクションゲーム(ACT)')
-Category.create(name: 'ロールプレイングゲーム(RPG)')
-Category.create(name: 'パズルゲーム(PZL)')
-Category.create(name: 'レースゲーム(RCG)')
-Category.create(name: 'シミュレーションゲーム(SLG)')
-Category.create(name: 'スポーツゲーム')
-Category.create(name: '音楽ゲーム')
-Category.create(name: 'ボードゲーム')
-
-# 使用機器
-Console.create(name: 'スマホ')
-Console.create(name: 'PS4')
-Console.create(name: 'Switch')
-Console.create(name: 'PC')
-Console.create(name: 'PS5')
-Console.create(name: 'Xbox')
-
-# ゲーム
-Game.create(name: 'APEX')
-Game.create(name: 'Fortnite')
-Game.create(name: 'PLAYERUNKNOWN’S BATTLEGROUNDS')
-Game.create(name: 'Rainbow Six Sige')
-Game.create(name: 'THE KING OF FIGHTERS XIV STEAM EDITION')
-Game.create(name: 'STREET FIGHTER V')
-Game.create(name: 'Monster Hunter:World')
-Game.create(name: 'CoD')
-Game.create(name: 'Minecraft')
-Game.create(name: 'Dead by Daylight')
-
 # テストユーザー
 100.times do |u|
   nickname = "テストユーザー#{u+1}"
