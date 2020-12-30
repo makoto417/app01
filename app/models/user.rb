@@ -5,6 +5,9 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: { case_sensitive: true }, length: { maximum: 15 }
 
   has_one_attached :image
+  has_many :boards
+  has_many :comments
+  
   has_many :user_console_relations
   has_many :consoles, through: :user_console_relations
   has_many :user_category_relations

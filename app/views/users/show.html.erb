@@ -87,6 +87,34 @@
           <%= render "contact" %>
         </div>
       <% end %>
+
+      <div class="show-bottom-center show-bottom-items c-box">
+        <p>書き込んだ掲示板</p>
+        <ul>
+          <% @write_boards.each do |e| %>
+            <li>
+              <%= link_to e.title, board_path(e.id) %>
+            </li>
+          <% end %>
+          <% if @write_boards.empty? %>
+            <span>まだ書き込んだ掲示板はありません</span>
+          <% end %>
+          </ul>
+      </div>
+
+      <div class="show-bottom-right show-bottom-items c-box">
+        <p>作成した掲示板</p>
+        <ul>
+          <% @create_boards.each do |e| %>
+            <li>
+              <%= link_to e.title, board_path(e.id) %>
+            </li>
+          <% end %>
+          <% if @create_boards.empty? %>
+            <span>まだ作成した掲示板はありません</span>
+          <% end %>
+          </ul>
+      </div>
     </div>
   </div>
 
@@ -120,6 +148,4 @@
       </ul>
     </div>
   <% end %>
-
-
 </div>
